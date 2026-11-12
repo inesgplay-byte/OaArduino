@@ -1,1 +1,393 @@
+<!DOCTYPE html>
+<html lang="es">
+   <!-- Proyecto OA Curso CC3 -->
+  <head>
+    
+    <meta charset="UTF-8">
+    <title>OA Arduino</title>
+     <!-- Tipografías de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header id="inicio">
+     
+      <div class="encabezado">
+        <div class="titulo">
+          <h1 class="txt-titulo1">Mision Arduino: Reparando la nave</h1>
+          <p class="txt-normal">Una aventura para conocer la placa Arduino</p>
+        </div>
+        <div class="mapa">
+            <a href="#inicio" style="font-size: small; text-decoration: none;color: #F4F8FF;">
+            <img src="Imagenes/mapaNave.png" width="100" alt="mapaNave">
+            <br>Mapa</a>
+        </div>
+        <div class="nivel">
+          <div><p class="txt-normal">Nivel Actual: <span id="txtNivel"> - </span></p> </div>
+          <div class="barra-nivel">
+            <div id="nivel-avance"></div>
+          </div>
+        </div>
+        <div class="jugador">
+          <div class="jugador-sesion">IG</div>
+          <div class="activo"></div>
+        </div>
+      </div>
+    </header>
+    <section id="mision" class="secciones-h">
+      <div class="presentacion">
+          <h2>La Nave esta en problemas</h2>
+          <div class="narrador">
+              <p >Algunos sistemas dejaron de funcionar y la tripulación necesita reparar la nave para llegar a destino. 
+                  Ayuda a la tripulación a activar sensores, controlar los actuadores y reprogramar la placa de control de la nave (Arduino) para estabilizarla.</p>
+              <p >Tú serás el tripulante técnico y deberás completar las diferentes misiones para recuperar el funcionamiento de la nave.</p>
+              <p >Ardu será tu ayudante quien te guiará en las misiones</p>
+          </div>
+      </div>
+      <div class="imagen-nave">
+          <img src="imagenes/MapaNave.png" width="500" alt="Mapa Nave" />
+      </div>
+    </section>
+          
+    <div class="barra-nav">
+      <nav class="menu">
+        
+        <a href="#mision" class="boton-menu">La misión</a>
+        <a href="#laboratorio" class="boton-menu">Laboratorio</a>
+        <a href="#control" class="boton-menu">Sala de control</a>
+        <a href="#motores" class="boton-menu">Sala de motores</a>
+        <a href="#electrica" class="boton-menu">Sala eléctrica</a>
+        <a href="#puente" class="boton-menu">Puente de mando</a>
+      </nav>
+    </div>
+
+    <main>
+      
+      <section id="laboratorio" class="secciones-v">
+        <h2>Laboratorio - Nivel: Novato</h2>
+        <div class="ayudante">
+            <div class="marco">
+              <p>¡Hola, tripulante! Soy ARDU, la inteligencia artificial de la nave. Tenemos un problema... los sistemas automáticos 
+                  dejaron de responder. Necesito que aprendas a utilizar Arduino para repararlos</p>
+              <p>Tu primera misión será conocer el controlador de la nave, que función cumple y qué características tiene</p>
+              <img src="imagenes/arduMision.png" width="100"  alt="Mision1" />
+            </div>    
+        </div>
+        <div class="contenido">
+        <article >
+          <h3 style="text-align: center;">Qué es Arduino</h3>
+          <p>Arduino es una plataforma electrónica de código abierto que permite crear proyectos capaces de recibir información del entorno, procesarla y realizar acciones.</p>
+          <p>Una placa Arduino contiene un microcontrolador, que podemos programar para indicarle qué debe hacer.</p>
+          <p>Podemos conectar diferentes componentes como luces led, sensores de temperatura, sensores de distancia, motores, pulsadores entre otros.</p>
+          <p>La placa recibe información a través de sus entradas, procesa esa información mediante un programa y puede enviar órdenes a sus salidas.</p>
+          <h3>Qué función cumple en la nave</h3>
+          <p>Dentro de nuestra misión, Arduino es el cerebro de los sistemas automáticos de la nave.</p>
+          <p>La nave cuenta con diferentes dispositivos que necesitan comunicarse entre sí. Arduino recibe información de los sensores, la interpreta siguiendo las instrucciones de un programa y controla diferentes dispositivos para producir una respuesta.</p>
+          <p>Por ejemplo, el sistema de control de temperatura funciona así:</p>
+          <ul>
+            <li>Arduino recibe la información del sensor</li>
+            <li>Arduino analiza el valor</li>
+            <li>Segun el valor Arduino envía señal al motor</li>
+            <li>El motor activa el sistema de ventilación</li>
+          </ul>
+          <div class="ayudante">
+            <p>"Sin nuestro controlador, los sensores podrían detectar problemas, pero no tendríamos quién tome decisiones y controle los dispositivos de la nave."</p>
+            <img src="imagenes/arduExplicacion.png" width="100"  alt="Mision1" />
+          </div>
+          <h3 style="text-align: center;"> Esquema del sistema</h3>
+          
+          <div style="text-align: center;">
+           <img src="imagenes/esquemaEntradaSalida.png" width="560"  alt="EntradaSalida" style="box-shadow:0 0 9px #00D9FF;"/>
+          </div>
+        </article>
+        </div>
+        <div class="desafio">
+          <h3>Misión 1</h3>
+          <p>¿Cuál es la función principal de Arduino en la nave?</p>
+          <form id="form-arduino">
+              <label><input type="radio" name="mision1" value="a">Defender la nave de ataques externos.</label>
+              <br>
+              <label><input type="radio" name="mision1" value="b">Recibir información de los sensores e interpretar instrucciones.</label>
+              <br>
+              <label><input type="radio" name="mision1" value="c">Proporcionar energía eléctrica.</label>
+              <br><br>
+              <button type="submit" id="comprobar-mision1" class="boton-respuesta">
+                  Comprobar respuesta
+              </button>
+              
+          </form>
+          <p id="mensajeM1"></p>
+        </div>
+      </section>
+     
+      <section id="control" class="secciones-v">
+        <h2>Sala de Control - Nivel:Asistente</h2>
+        <div class="ayudante">
+            <p >La nave necesita saber qué está ocurriendo en el exterior. Pero Arduino por si solo no puede recopilar esa información, necesita escuchar, sentir y medir datos del entorno utilizando sensores.</p>
+            <p >Aprende sobre los sensores para poder repararlos.</p>
+            <img src="imagenes/arduMision.png" width="100"  alt="Mision2" />
+          </div>
+        
+       <div class="contenido-h"> 
+          <article class="col1">
+            <h3 style="text-align: center;">Sensores</h3>
+            <p>Un sensor es un dispositivo diseñado para detectar cambios o estímulos físicos o químicos del entorno (como luz, temperatura, presión, movimiento o humedad) y transformarlos en una señal que se puede medir, registrar o interpretar, generalmente en forma de impulso eléctrico.
+            </p>
+            <p>Los <strong>sensores digitales </strong>proporcionan información mediante dos estados, que pueden representarse como dos posibilidades: activado o desactivado, (LOW y HIGH).</p>
+            <p>Los <strong> sensores analógicos </strong>proporcionan una señal que puede variar gradualmente según la magnitud que miden. Esto permite obtener distintos valores, en lugar de limitarse a indicar dos estados.</p>
+            <h3>Ejemplos</h3>
+
+            <ul>
+              <li>De temperatura: Miden el calor (como un sensor ambiental)</li>
+              <li>De movimiento o proximidad: Detectan la presencia o cercanía de un objeto o persona.</li>
+              <li>De luz (fotoeléctricos): Reaccionan a la intensidad lumínica.</li>
+            </ul>
+          </article>
+          <div class="col2">
+              <img src="imagenes/sensores.png" width="560"  alt="Sensores" />
+          </div>
+        </div>
+        <div class="ayudante">
+          <p> “En nuestra nave: un sensor de luz permite medir la iluminación del ambiente para que Arduino ajuste el sistema de luces. Otro sensor puede detectar si alguna compuerta quedó abierta.</p>
+          <p>Ahora que ya sabes cómo funciona la nave, tienes que identificar los sensores que están fallando”.</p>
+          <img src="imagenes/arduExplicacion.png" width="100"  alt="Mision2" />
+        </div>
+        <div class="desafio">
+          <h3>Misión 2</h3>
+          <p>¿Cuál es la función principal de un sensor en la nave?</p>
+          <form id="form-sensores1">
+              <label><input type="radio" name="mision21" value="a">Proporcionar energía eléctrica.</label>
+              <br>
+              <label><input type="radio" name="mision21" value="b">Detectar o medir información del entorno.</label>
+              <br>
+              <label><input type="radio" name="mision21" value="c">Ejecutar instrucciones.</label>
+              <br><br>
+              <button type="submit" id="comprobar-mision21" class="boton-respuesta">
+                  Comprobar respuesta
+              </button>
+         
+          </form>
+          <p id="mensajeM21"> mensaje de respuesta</p>
+          <br>
+          <p>El sistema automático de encendido de luces no funciona, ¿Cuál es el sensor que está fallando?</p>
+          <form id="form-sensores2">
+              <label><input type="radio" name="mision22" value="a">Luz ldr</label>
+              <br>
+              <label><input type="radio" name="mision22" value="b">Temperatura</label>
+              <br>
+              <label><input type="radio" name="mision22" value="c">Distancia</label>
+              <br><br>
+              <button type="submit" id="comprobar-mision22" class="boton-respuesta">
+                  Comprobar respuesta
+              </button>
+          </form>
+          <p id="mensajeM22"> mensaje de respuesta</p>
+          <br>
+          <p>La nave ha cruzado muy cerca de un asteroide, no ha sido capas de detectarlo. ¿Qué sensor está fallando?</p>
+          <form id="form-sensores3">
+              <label><input type="radio" name="mision23" value="a">Temperatura</label>
+              <br>
+              <label><input type="radio" name="mision23" value="b">Movimiento</label>
+              <br>
+              <label><input type="radio" name="mision23" value="c">Distancia</label>
+              <br><br>
+              <button type="submit" id="comprobar-mision23" class="boton-respuesta">
+                  Comprobar respuesta
+              </button>
+         
+          </form>
+          <p id="mensajeM23"> mensaje de respuesta</p>
+        </div>
+      </section>
+
+      <section id="motores" class="secciones">
+        <h2>Sala de Motores - Nivel: Asistente</h2>
+        <div class="ayudante">
+            <p>¡Bienvenido a la Sala de motores, tripulante! ¡Buen trabajo en la misión anterior! </p>
+            <p>La nave ya puede detectar lo que ocurre. Pero necesitamos que pueda reaccionar.</p>
+            <p>Los actuadores son los dispositivos que pueden realizar una acción a partir de una orden.</p>
+            <img src="imagenes/arduMision.png" width="100"  alt="Mision3" />
+        </div>
+        <div class="contenido"> 
+        <article>
+          <h3 style="text-align: center;">Actuadores</h3>
+          <p>Un actuador es un dispositivo que recibe una señal de control y la transforma en una acción física. Según el tipo de actuador, esa acción puede ser producir luz, generar sonido, provocar movimiento o activar algún mecanismo.</p>
+          <p>En un sistema con Arduino, los actuadores permiten ejecutar acciones de acuerdo con las instrucciones de un programa.</p>
+          <h3>Ejemplos</h3>
+          <ul>
+              <li>💡 LED: transforma la energía eléctrica en luz. Puede utilizarse para indicar que un sistema está encendido o para iluminar un espacio.</li>
+              <li>🔊 Zumbador (buzzer): produce sonidos. Puede utilizarse para emitir alarmas o avisos cuando ocurre un problema.</li>
+              <li>⚙️ Motor de corriente continua: transforma la energía eléctrica en movimiento giratorio. Puede utilizarse para accionar ruedas, hélices o mecanismos.</li>
+              <li>🔄 Servomotor: permite controlar la posición angular de un eje dentro de un rango determinado. Puede utilizarse para abrir y cerrar compuertas o mover pequeñas piezas.</li>
+              <li>y más...</li> 
+           </ul>
+           <div style="text-align: center;">
+            <img src="imagenes/actuadores.png" width="560"  alt="Actuadores" style="box-shadow:0 0 9px #00D9FF;" />
+          </div>
+          <div class="ayudante">
+            <p>"Recuerda, tripulante: los sensores permiten obtener información del entorno, mientras que los actuadores permiten realizar acciones. Arduino procesa la información y controla esas acciones siguiendo el programa."</p>
+            <img src="imagenes/arduExplicacion.png" width="100"  alt="Mision3" />
+          </div>
+        
+        </article>
+        </div> 
+        <div class="desafio">
+          <h3>Misión 3</h3>
+          <p>Completa el informe técnico</p>
+          <button id="btnPista" class="boton-respuesta">💡 Pista</button>
+          <p id="pista" class="oculto">Utiliza alguno de estos actuadores: Servomotor, Led, Zumbador, Motor CC, Display</p>
+          <form id="form-actuadores">
+            <p>1. Para producir una señal luminosa utilizaremos un <input type="text" id="respuesta1" style="color:black;">.</p>
+            <p>2. Para emitir una alarma sonora utilizaremos un <input type="text" id="respuesta2" style="color:black;">.</p>
+            <p>3. Para controlar la posición de una compuerta utilizaremos un <input type="text" id="respuesta3" style="color:black;">.</p>
+
+            <button type="submit" id="comprobar-mision31" class="boton-respuesta">
+                Comprobar respuestas
+            </button>
+
+            <p id="mensajeM31"> mensaje de respuesta</p>
+
+          </form>
+          <br>
+          <div class="desafio-mision3">
+              <p>Repara los sistemas de la nave!</p>
+              <p style="color: #F4F8FF;">Se detectó una falla en el sistema de oxígeno. Necesitamos reactivar las hélices de ventilación. </p>
+              <p>¿Qué actuador debemos activar?</p>
+              <button type="button" class="boton-opcion" data-respuesta="correcta">Motor CC</button>
+              <button type="button" class="boton-opcion" data-respuesta="incorrecta">LED</button>
+              <button type="button" class="boton-opcion" data-respuesta="incorrecta">Servomotor</button>
+
+           <p id="mensajeM32"> </p>
+            
+          </div>
+        </div>
+      </section>
+      
+      <section id="electrica" class="secciones">
+        <h2>Sala eléctrica - Nivel: Técnico de la nave</h2>
+        <div class="ayudante">
+            <p>Se han identificado los sensores y actuadores que utiliza la nave para funcionar, pero aún así algunos no están funcionando bien, es posible que exista una falla en las conexiones.</p>
+            <p>Para que los sistemas funcionen, debemos conocer las conexiones de la placa, identificar sus pines y aprender a construir un circuito eléctrico sencillo.</p>
+            <p>Tripulante debes saber dónde se conectan los dispositivos para poder reparar el daño.</p>
+            <img src="imagenes/arduMision.png" width="100"  alt="Mision4" />
+        </div>
+        
+        <div class="contenido"> 
+          <article >
+            <h3 style="text-align: center;">Conexiones</h3>
+            <p>Arduino cuenta con diferentes conexiones o pines que permiten comunicarse con los componentes electrónicos.</p>
+            <p>A través de ellos, la placa puede recibir información de los sensores y enviar señales para controlar los actuadores.</p>
+            <h3>Por ejemplo</h3>
+            <ul>
+                <li>Un sensor de luz se conecta a un pin de entrada para enviar información sobre la iluminación del ambiente.</li>
+                <li>Un zumbador puede conectarse a un pin de salida para emitir una alarma sonora.</li>
+                <li>Un LED se conecta a un pin de salida para que Arduino pueda encenderlo o apagarlo.</li>
+            </ul>
+            <p><strong>¡Importante!</strong> Cada componente debe conectarse en los pines adecuados y respetando la polaridad cuando corresponda. Una conexión incorrecta puede impedir que el circuito funcione o incluso dañar algún componente.</p>
+            <h3> Pines digitales y analógicos, 5v y GND</h3>
+            <p>En la placa Arduino UNO encontramos diferentes tipos de pines. Cada uno cumple una función específica.</p>
+            <h4>Pines Digitales</h4>
+            <p>Los pines digitales están identificados con números del 0 al 13.</p>
+            <p>Permiten <strong>recibir</strong> o <strong>enviar</strong> señales digitales, que en los ejemplos básicos pueden representar dos estados:</p>
+            <ul>
+                <li><strong>HIGH (ALTO)</strong>: señal de nivel alto.</li>
+                <li><strong>LOW (BAJO)</strong>: señal de nivel bajo.</li>
+              
+            </ul>
+            <h4>Pines Analógicos</h4>
+            <p>Los pines analógicos están identificados con las letras A0, A1, A2, A3, A4 y A5.</p>
+            <p>Se utilizan principalmente para recibir señales de sensores que pueden entregar diferentes valores, como un sensor de luz o un potenciómetro.</p>
+            <h4>Pines de alimentación 5V y GND</h4>
+            <p>Además de los pines digitales y analógicos, Arduino dispone de conexiones que permiten alimentar los componentes.</p>
+            <ul>
+                <li><strong>5V</strong>:proporciona una tensión de 5 voltios para alimentar componentes compatibles.</li>
+                <li><strong>GND (Ground)</strong>: es la conexión de referencia de tierra o masa del circuito. Permite cerrar el recorrido de la corriente eléctrica.</li>
+              
+            </ul>
+            <div style="width: 60%; border: 1px solid rgb(48, 124, 165);">
+                <div style="position: relative; padding-bottom: 100%; padding-top: 0; height: 0;">
+                  <iframe title="ArduinoInteactivo" frameborder="0" width="800" height="800" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://view.genially.com/6aa4b27c9fb8c321dd6824b8" type="text/html" allowscriptaccess="always" allowfullscreen="true" scrolling="yes" allownetworking="all">
+                  </iframe> 
+                </div> 
+            </div>
+            
+            <h3 style="text-align: center;">Circuito básico led</h3>
+            <div class="contenido-h">
+            <div class="col1">
+              <p>Ejemplo de un circuito sencillo para encender un LED utilizando Arduino.</p>
+              <p>Un LED es un componente electrónico que emite luz cuando circula corriente eléctrica a través de él en el sentido adecuado.</p>
+              <p>¿Qué necesitamos?</p>
+              <ul>
+                <li>Una placa Arduino UNO</li>
+                <li>Un Led</li>
+                <li>Una resistencia de 220 Ω</li>
+                <li>Una protoboard</li>
+                <li>Cables de conexión</li>
+            </ul>
+            <br>
+            <a href="https://www.tinkercad.com/things/652cF4tTVkW-circuitoled?sharecode=2K2j1f76FlbXFq28Qqfh9Jd7ApCDQ32Cz7BMc3IEbSw" target="_blank" rel="noopener noreferrer" class="enlace-tinker">Míralo en Tinkercad 👆</a>
+            </div>
+            <div class="col2">
+              
+              <br><img src="imagenes/circuitoLed.png" width="560"  alt="circuitoLed" style="box-shadow:0 0 9px #00D9FF;" />
+              
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="desafio">
+          <h3>Misión 4</h3>
+          <p> Los sistemas de luces no estan funcionando, hay errores en las conexiones. ¿Puedes repararlos?</p>
+         
+          <div class="contenido-h">
+            <div class="col1">
+              <img src="imagenes/fallaCircuitoLed.png" width="400"  alt="fallaCircuito" style="box-shadow:0 0 9px #00D9FF;" />
+            </div>
+            <div class="col2">
+               <p>Identifica los errores, puedes marcar más de una opción.</p>
+              <form id="form-sala">
+                <label><input type="checkbox" name="errores" value="gnd">Falta cerrar el circuito conectando a GND.</label>
+                <br><label><input type="checkbox" name="errores" value="resistencia">El LED necesita una resistencia para funcionar.</label>
+                <br><label><input type="checkbox" name="errores" value="polaridad">El LED debe conectarse directamente a 5V.</label>
+                <br><label><input type="checkbox" name="errores" value="pin-digital">El LED debe estar conectado a un pin digital.</label>
+                <br><button type="submit" id="comprobar-mision4" class="boton-respuesta">Comprobar respuestas</button>
+              </form>
+            </div>
+          </div>
+          <p id="mensajeM4"> </p>
+        </div>
+      </section>
+
+      <section id="puente" class="secciones">
+        <h2>Puente de mando - Nivel: Programador Arduino</h2>
+        <div class="ayudante">
+            <p>“Llegó el momento de decirle a la nave qué hacer. Arduino necesita que le demos instrucciones para funcionar”</p>
+            <img src="imagenes/arduMision.png" width="100"  alt="Mision5" />
+          </div>
+        <div class="contenido">   
+        <article>
+          <h3>IDE Arduino</h3>
+          <h3>Estructura del programa</h3>
+          <h3>Entradas y salidas</h3>
+          <h3>Instrucciones básicas</h3>
+        </article>
+        </div>
+        <div class="desafio">
+          <h3>Misión 5</h3>
+          <p>“Corrige el código”.</p>
+          <p>Escribe el bloque faltante para que enciendan las luces de la nave.</p>
+        </div>
+      </section>
+
+
+
+    </main>
+    <footer>
+      <p>INES © 2026</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
