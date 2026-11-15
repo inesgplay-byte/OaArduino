@@ -14,7 +14,7 @@ h1{
 h2{
     font-family: 'Rajdhani', sans-serif;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 26px;
     color: #00D9FF;
     text-shadow: 0 0 10px #00D9FF;
     text-align: center;
@@ -22,26 +22,34 @@ h2{
 h3{
     font-family: 'Rajdhani', sans-serif;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 24px;
     color: #00D9FF;
     text-align: left;
 }
 h4{
     font-family: 'Rajdhani', sans-serif;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 22px;
     color: #00D9FF;
     text-align: left;
 }
 
 /* Textos y explicaciones */
-p, li, label, input {
+p, label, input {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 16px;
     color: #F4F8FF;
 }
 
+li{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #F4F8FF;
+    line-height: 2;
+
+}
 /* Encabezado de la pagina fijo */
 .encabezado{
     display: flex;
@@ -271,8 +279,6 @@ p, li, label, input {
 
 .contenido-h .col1{
     flex: 1;
-   
-
 }
 
 .contenido-h img{
@@ -384,6 +390,8 @@ p, li, label, input {
 .respuestaOk{
     color:#28E0A1 ;
 }
+
+
 .oculto{display:none;}
 #pista{background:#fff7d6;border:1px solid #e0b400;padding:8px 12px;border-radius:8px}
 
@@ -407,3 +415,32 @@ p, li, label, input {
  .enlace-tinker:hover {
     background-color: #00D9FF;
   }
+
+/* formato formulario mision 5 */
+
+#form-puente2 p {
+   
+    font-family: monospace;
+    font-size: 16px;
+    
+}
+
+#form-puente2 input {
+    width: 100px;
+    padding: 6px;
+    background-color:#F4F8FF;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+/* Bloqueo de botones*/
+.bloqueada {
+    display: none;
+}
+
+/*Apariencia de los enlaces bloqueados */
+nav a.bloqueado {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}

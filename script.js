@@ -24,7 +24,7 @@ formM1.addEventListener("submit", function (event) {
         opciones1[j].disabled = true;
     }
     boton.disabled = true;
-
+    desbloquearSala("control", "link-control");
        
   } else {
     msg.textContent = "Incorrecto, vuelve a intentar.";
@@ -48,14 +48,17 @@ formM21.addEventListener("submit", function (event) {
   if (marcada === null) {
     msg2.textContent = "Elige una opción";
   } else if (marcada.value === "b") {
-    msg2.textContent = "¡Correcto!";
+    msg2.textContent = " ✅ ¡Correcto!";
     msg2.classList.add("ok");
     todoOk[0]=1;
     for (let j = 0; j < opciones21.length; j++) {
         opciones21[j].disabled = true;
     }
     boton21.disabled = true;
-    if (todoOk[0]===1 && todoOk[1]===1 && todoOk[2]===1 ){cambiarNivel(40);}
+    if (todoOk[0]===1 && todoOk[1]===1 && todoOk[2]===1 ){
+      cambiarNivel(40);
+      desbloquearSala("motores", "link-motores");
+    }
   } else {
     msg2.textContent = "Incorrecto, vuelve a intentar.";
     msg2.classList.add("error");
@@ -85,7 +88,10 @@ formM22.addEventListener("submit", function (event) {
         opciones22[j].disabled = true;
     }
     boton22.disabled = true;
-    if (todoOk[0]===1 && todoOk[1]===1 && todoOk[2]===1 ){cambiarNivel(40);}
+    if (todoOk[0]===1 && todoOk[1]===1 && todoOk[2]===1 ){
+      cambiarNivel(40);
+      desbloquearSala("motores", "link-motores");
+    }
   } else {
     msg3.textContent = "Incorrecto, vuelve a intentar.";
     msg3.classList.add("error");
@@ -116,6 +122,7 @@ formM23.addEventListener("submit", function (event) {
     boton23.disabled = true;
     if (todoOk[0]===1 && todoOk[1]===1 && todoOk[2]===1 ){
     cambiarNivel(40);
+    desbloquearSala("motores", "link-motores");
     }
   } else {
     msg4.textContent = "Incorrecto, vuelve a intentar.";
@@ -149,7 +156,7 @@ function cambiarNivel(n) {
   }else if (n===80){
     txtNivel.textContent="Técnico de la Nave";
   }else if (n===100){
-    txtNivel.textContent="Programados Arduino";
+    txtNivel.textContent="Programador Arduino";
   }
 }
 
@@ -190,6 +197,7 @@ formM3.addEventListener("submit", function (event) {
     respuesta3.disabled=true;
     if (todoOk3[0]===1 && todoOk3[1]===1){
     cambiarNivel(60);
+    desbloquearSala("electrica", "link-electrica");
     }
   } else {
     msgM31.textContent = "Algunas de las palabras es incorrecta";
@@ -227,6 +235,7 @@ botonesM3.forEach(boton => {
             todoOk3[1]=1;
             if (todoOk3[0]===1 && todoOk3[1]===1  ){
             cambiarNivel(60);
+            desbloquearSala("electrica", "link-electrica");
             }
         } else {
             msgM32.textContent = "Respuesta incorrecta. Ese componente no solucionará la falla de ventilación. ¡Inténtalo de nuevo!";
@@ -274,7 +283,7 @@ formulario.addEventListener("submit", function(evento) {
 
     if (tieneGND && tienePinDigital && cantidadCorrectas) {
 
-        cartel.textContent = "🎉 ¡Excelente trabajo! Identificaste correctamente los dos errores del circuito.";
+        cartel.textContent = "✅ ¡Excelente trabajo! Identificaste correctamente los dos errores del circuito.";
         //cartel.className = "mensaje correcto";
         cartel.classList.add("ok");
         for (let j = 0; j < opciones4.length; j++) {
@@ -282,6 +291,7 @@ formulario.addEventListener("submit", function(evento) {
         }
         boton4.disabled = true;
         cambiarNivel(80);
+        desbloquearSala("puente", "link-puente");
         
 
     } else {
@@ -295,5 +305,96 @@ formulario.addEventListener("submit", function(evento) {
 });
 
 
+// codigo para el formulario de la mision 5
+let todoOk5=[0,0]; //vector para saber si las 2 opciones son correctas
+
+//codigo formulario con opciones
+
+const formM51 = document.querySelector("#form-puente1");
+const msg51= document.querySelector("#mensajeM51");
+const boton51 = document.querySelector("#comprobar-mision51");
+const opciones51 = document.querySelectorAll('input[name="mision51"]');
+
+formM51.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const marcada = document.querySelector('input[name="mision51"]:checked');
+  msg51.classList.remove("ok", "error");
+  if (marcada === null) {
+    msg51.textContent = "Elige una opción";
+  } else if (marcada.value === "b") {
+    msg51.textContent = "✅ ¡Correcto!";
+    msg51.classList.add("ok");
+    todoOk5[0]=1;
+    for (let j = 0; j < opciones51.length; j++) {
+        opciones51[j].disabled = true;
+    }
+    boton51.disabled = true;
+    if (todoOk5[0]===1 && todoOk5[1]===1){
+    cambiarNivel(100);
+    desbloquearSala("final", "link-electrica");
+    }
+  } else {
+    msg51.textContent = "Incorrecto, vuelve a intentar.";
+    msg51.classList.add("error");
+    todoOk5[0]=0;
+    cambiarNivel(80);
+    
+  }
+});
+//codigo formulario de completar
+const formM52 = document.querySelector("#form-puente2");
+const resp1 = document.querySelector("#resp1");
+const resp2 = document.querySelector("#resp2");
+const msgM52 = document.querySelector("#mensajeM52");
+const boton52 = document.querySelector("#comprobar-mision52"); 
+formM52.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const r1 = resp1.value.trim();
+  const r2 = resp2.value.trim();
+  msgM52.classList.remove("ok", "error");
+  if (r1=== "" || r2 === "" ){
+     msgM52.textContent = "⚠️ Debes completar los dos espacios.";
+  } else if ((r1 === "pinMode") && (r2 === "HIGH") ){
+    msgM52.textContent = "✔️ ¡Excelente! Completaste correctamente el programa.";
+    msgM52.classList.add("ok");
+    todoOk5[1]=1;
+    resp1.disabled=true; 
+    resp2.disabled=true;
+    boton52.disabled = true;
+    if (todoOk5[0]===1 && todoOk5[1]===1){
+      cambiarNivel(100);
+      desbloquearSala("final", "link-electrica");
+    }
+  } else {
+    msgM52.textContent = "❌ Algunas respuestas no son correctas. ¡Inténtalo nuevamente!";
+    msgM52.classList.add("error");
+    todoOk5[1]=0;
+    cambiarNivel(80);
+  }
+});
+
 // habilitar o desabilitar secciones
+//codigo para bloquear y desloquear salas (Ayuda con IA)
+function desbloquearSala(idSala, idEnlace) {
+
+    // Buscamos la sección que queremos desbloquear
+    const sala = document.getElementById(idSala);
+
+    // Buscamos el enlace correspondiente
+    const enlace = document.getElementById(idEnlace);
+
+    // Hacemos visible la sección
+    sala.classList.remove("bloqueada");
+
+    // Habilitamos el enlace
+    enlace.classList.remove("bloqueado");
+
+    // Quitamos el candado del menú
+    enlace.textContent = enlace.textContent.replace("🔒", "🔓");
+}
+
+
+
+
+
 

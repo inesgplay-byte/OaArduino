@@ -57,16 +57,16 @@
         
         <a href="#mision" class="boton-menu">La misión</a>
         <a href="#laboratorio" class="boton-menu">Laboratorio</a>
-        <a href="#control" class="boton-menu">Sala de control</a>
-        <a href="#motores" class="boton-menu">Sala de motores</a>
-        <a href="#electrica" class="boton-menu">Sala eléctrica</a>
-        <a href="#puente" class="boton-menu">Puente de mando</a>
+        <a href="#control" id="link-control" class="boton-menu bloqueado">🔒 Sala de control</a>
+        <a href="#motores" id="link-motores" class="boton-menu bloqueado">🔒 Sala de motores</a>
+        <a href="#electrica" id="link-electrica" class="boton-menu bloqueado">🔒 Sala eléctrica</a>
+        <a href="#puente" id="link-puente" class="boton-menu bloqueado">🔒 Puente de mando</a>
       </nav>
     </div>
 
     <main>
       
-      <section id="laboratorio" class="secciones-v">
+      <section id="laboratorio" class="secciones-v sala">
         <h2>Laboratorio - Nivel: Novato</h2>
         <div class="ayudante">
             <div class="marco">
@@ -123,7 +123,7 @@
         </div>
       </section>
      
-      <section id="control" class="secciones-v">
+      <section id="control" class="secciones-v sala bloqueada">
         <h2>Sala de Control - Nivel:Asistente</h2>
         <div class="ayudante">
             <p >La nave necesita saber qué está ocurriendo en el exterior. Pero Arduino por si solo no puede recopilar esa información, necesita escuchar, sentir y medir datos del entorno utilizando sensores.</p>
@@ -170,7 +170,7 @@
               </button>
          
           </form>
-          <p id="mensajeM21"> mensaje de respuesta</p>
+          <p id="mensajeM21"> </p>
           <br>
           <p>El sistema automático de encendido de luces no funciona, ¿Cuál es el sensor que está fallando?</p>
           <form id="form-sensores2">
@@ -184,7 +184,7 @@
                   Comprobar respuesta
               </button>
           </form>
-          <p id="mensajeM22"> mensaje de respuesta</p>
+          <p id="mensajeM22"> </p>
           <br>
           <p>La nave ha cruzado muy cerca de un asteroide, no ha sido capas de detectarlo. ¿Qué sensor está fallando?</p>
           <form id="form-sensores3">
@@ -199,11 +199,11 @@
               </button>
          
           </form>
-          <p id="mensajeM23"> mensaje de respuesta</p>
+          <p id="mensajeM23"></p>
         </div>
       </section>
 
-      <section id="motores" class="secciones">
+      <section id="motores" class="secciones sala bloqueada">
         <h2>Sala de Motores - Nivel: Asistente</h2>
         <div class="ayudante">
             <p>¡Bienvenido a la Sala de motores, tripulante! ¡Buen trabajo en la misión anterior! </p>
@@ -228,7 +228,7 @@
             <img src="imagenes/actuadores.png" width="560"  alt="Actuadores" style="box-shadow:0 0 9px #00D9FF;" />
           </div>
           <div class="ayudante">
-            <p>"Recuerda, tripulante: los sensores permiten obtener información del entorno, mientras que los actuadores permiten realizar acciones. Arduino procesa la información y controla esas acciones siguiendo el programa."</p>
+            <p>Recuerda, tripulante: los sensores permiten obtener información del entorno, mientras que los actuadores permiten realizar acciones. Arduino procesa la información y controla esas acciones siguiendo el programa.</p>
             <img src="imagenes/arduExplicacion.png" width="100"  alt="Mision3" />
           </div>
         
@@ -248,7 +248,7 @@
                 Comprobar respuestas
             </button>
 
-            <p id="mensajeM31"> mensaje de respuesta</p>
+            <p id="mensajeM31"></p>
 
           </form>
           <br>
@@ -266,7 +266,7 @@
         </div>
       </section>
       
-      <section id="electrica" class="secciones">
+      <section id="electrica" class="secciones sala bloqueada">
         <h2>Sala eléctrica - Nivel: Técnico de la nave</h2>
         <div class="ayudante">
             <p>Se han identificado los sensores y actuadores que utiliza la nave para funcionar, pero aún así algunos no están funcionando bien, es posible que exista una falla en las conexiones.</p>
@@ -361,32 +361,124 @@
         </div>
       </section>
 
-      <section id="puente" class="secciones">
+      <section id="puente" class="secciones sala bloqueada">
         <h2>Puente de mando - Nivel: Programador Arduino</h2>
         <div class="ayudante">
-            <p>“Llegó el momento de decirle a la nave qué hacer. Arduino necesita que le demos instrucciones para funcionar”</p>
+            <p>¡Tripulante, estamos llegando al final de nuestra misión! Llegó el momento de decirle a la nave qué hacer. Arduino necesita que le demos instrucciones para funcionar.</p>
+            <p>Para que la nave pueda funcionar automáticamente, necesitamos crear programas que indiquen qué debe hacer la placa, cuándo debe hacerlo y cómo debe responder ante diferentes situaciones.</p>
             <img src="imagenes/arduMision.png" width="100"  alt="Mision5" />
           </div>
         <div class="contenido">   
         <article>
           <h3>IDE Arduino</h3>
+          <p>Arduino se programa utilizando un lenguaje basado en C/C++. Para escribir y cargar los programas se utiliza el entorno de desarrollo Arduino IDE.</p>
+          <p>El Arduino IDE (Entorno de Desarrollo Integrado) es el software oficial y gratuito utilizado para escribir, compilary cargar programas en las placas de desarrollo.</p>
           <h3>Estructura del programa</h3>
-          <h3>Entradas y salidas</h3>
+          <div class="contenido-h">
+            <div class="col1">
+              <img src="imagenes/arduinoIde.png" width="460"  alt="ArduinoIde" />
+            </div>
+            <div class="col2">
+              
+              <p>Los programas de Arduino tienen dos funciones principales que siempre debemos conocer:</p>
+              <p><strong>setup()</strong></p>
+              <p>Esta función se ejecuta una sola vez cuando Arduino se enciende o se reinicia.</p>
+              <p>Se utiliza para configurar los pines y preparar los componentes que se van a utilizar.</p>
+              <p><strong>loop()</strong></p>
+              <p>Esta función se ejecuta continuamente mientras la placa esté encendida.</p>
+              <p>Dentro de ella se escriben las instrucciones que Arduino debe repetir.</p>
+            </div>
+          </div>
           <h3>Instrucciones básicas</h3>
+          <p>Para comenzar a programar Arduino, es necesario conocer algunas instrucciones básicas:</p>
+          <ul>
+            <li><strong>pinMode():</strong> permite configurar un pin como entrada (INPUT) o salida (OUTPUT).</li>
+            <li><strong>digitalWrite():</strong> permite enviar una señal digital HIGH o LOW a un pin configurado como salida.</li>
+            <li><strong>digitalRead():</strong> permite leer el estado de una entrada digital.</li>
+            <li><strong>analogRead():</strong>permite leer un valor de una entrada analógica. En Arduino UNO clásico devuelve valores entre 0 y 1023.</li>
+            <li><strong>delay():</strong>permite establecer una pausa en el programa. El tiempo se expresa en milisegundos. Por ejemplo, delay(1000) representa una pausa de un segundo.</li>
+          </ul>
+          
+          <h3>Ejemplo</h3>
+          <div class="contenido-h">
+            <div class="col1">
+              <img src="imagenes/arduinoLedTitila.png" width="360"  alt="ArduinoLedTitila" />
+            </div>
+            <div class="col2">
+              <ol>
+                <li>void setup(): comienza la función de configuración.</li>
+                <li>pinMode(13, OUTPUT): configura el pin digital 13 como salida.</li>
+                <li>void loop(): comienza la función que se repetirá continuamente.</li>
+                <li>digitalWrite(13, HIGH): enciende el LED conectado al pin 13.</li>
+                <li>delay(1000): espera un segundo.</li>
+                <li>digitalWrite(13, LOW): apaga el LED.</li>
+                <li>delay(1000): espera otro segundo.</li>
+              </ol>
+              
+            </div>
+          </div>
         </article>
         </div>
+        <div class="ayudante">
+            <p>Recuerda, tripulante: <br>Las instrucciones de Arduino generalmente terminan con punto y coma (;).
+            <br>Las llaves { } indican el comienzo y el final de una función o bloque de instrucciones.
+            <br>Los comentarios comienzan con // y sirven para explicar el código. No se ejecutan.
+            <br>Es importante respetar la escritura de las instrucciones y sus parámetros.</p>
+            <img src="imagenes/arduExplicacion.png" width="100"  alt="Mision3" />
+          </div>
         <div class="desafio">
-          <h3>Misión 5</h3>
-          <p>“Corrige el código”.</p>
-          <p>Escribe el bloque faltante para que enciendan las luces de la nave.</p>
+          <h3>Ultima misión - ¡La nave está casi reparada!</h3>
+          
+        
+          <p>¿Cuál es la función que se ejecuta continuamente mientras Arduino está encendido?</p>
+          <form id="form-puente1">
+              <label><input type="radio" name="mision51" value="a">setup()</label>
+              <br>
+              <label><input type="radio" name="mision51" value="b">loop()</label>
+              <br>
+              <label><input type="radio" name="mision51" value="c">pinMode()</label>
+              <br>
+              <label><input type="radio" name="mision51" value="d">delay()</label>
+              <br><br>
+              <button type="submit" id="comprobar-mision51" class="boton-respuesta">
+                  Comprobar respuesta
+              </button>
+         
+          </form>
+          <p id="mensajeM51"></p>
+
+          <p>Completa los espacios para configurar el pin 13 como salida y encender el LED.</p>
+          <form id="form-puente2">
+            <p>void setup() {</p>
+            <p style="text-indent: 30px;"> <input type="text" id="resp1" style="color:black;">(13, OUTPUT);</p>
+            <p>}</p>
+            <p>void loop() {</p>
+            <p style="text-indent: 30px;">digitalWrite(13,<input type="text" id="resp2" style="color:black;">).</p>
+            <p>}</p>
+
+            <button type="submit" id="comprobar-mision52" class="boton-respuesta">
+                Comprobar respuestas
+            </button>
+
+            <p id="mensajeM52"></p>
+
+          </form>
+
         </div>
+      </section>
+      <section id="final" class="secciones sala bloqueada">
+        <div class="ayudante">
+            <p style="font-size: xx-large;">🎉 ¡Felicitaciones Tripulante!. ¡Nave reparada! </p>
+            
+            <img src="imagenes/arduMision.png" width="100"  alt="Mision5" />
+          </div>
       </section>
 
 
 
     </main>
     <footer>
-      <p>INES © 2026</p>
+      <p style="font-size: smaller;">IG - Curso Ceibal Ciencias de la Computación - Diseño Web - 2026</p>
     </footer>
     <script src="script.js"></script>
   </body>
